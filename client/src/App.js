@@ -1,23 +1,24 @@
-// client/src/components/App.js
-import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0);
+import Landing from "./pages/Landing";
+import BlogFeed from "./pages/BlogFeed";
+import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount";
+import Layout from "./components/Layout";
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+function App() {
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Routes>
-          <Route path="/testing" element={<div>Test</div>} />
-          <Route path="/" element={<div>Home</div>} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Landing/>} />
+            <Route path="/feed" element={<BlogFeed/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/create_account" element={<CreateAccount/>} />
+          </Routes>
+        </Layout>
       </div>
     </BrowserRouter>
   );
