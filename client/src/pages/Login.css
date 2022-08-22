@@ -1,0 +1,8 @@
+.login__form{
+    display: grid;
+    grid-template-rows: 10vh 10vh 10vh 10vh;
+}
+
+.login__submit{
+    height: 40px;
+}
