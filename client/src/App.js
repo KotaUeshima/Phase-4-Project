@@ -1,12 +1,38 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, {useEffect} from 'react'
+
+import { userState, loggedIn } from './components/atoms';
+import { useSetRecoilState, useRecoilValue} from 'recoil'
 
 import Landing from "./pages/Landing";
 import BlogFeed from "./pages/BlogFeed";
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import Layout from "./components/Layout";
+import Blog from "./pages/Blog";
 
 function App() {
+
+  const setLoggedIn = useSetRecoilState(loggedIn)
+  const setUserState = useSetRecoilState(userState)
+
+  useEffect(() => {
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setLoggedIn(true)
+          setUserState({
+              username: user.username,
+              id: user.id
+          })
+        })
+      }
+      else{
+        console.log('nobody is logged in')
+      }
+    });
+  }, []);
+
 
   return (
     <BrowserRouter>
@@ -15,6 +41,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing/>} />
             <Route path="/feed" element={<BlogFeed/>} />
+            <Route path="/blogs/:id" element={<Blog/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/create_account" element={<CreateAccount/>} />
           </Routes>
