@@ -19,17 +19,14 @@ function BlogFeed() {
   })
 
   const backgroundStyle = {
-    minHeight: '85vh',
-    backgroundSize: 'cover',
-    backgroundColor: '#BEBEBE',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+    height: '85vh',
+    backgroundColor: 'white',
+    overflow: 'auto'
   }
 
   return (
     <Box style={backgroundStyle}>
-      <Grid container spacing={2} marginTop="30px">
+      <Grid container spacing={2} marginTop="30px" marginBottom="30px">
         {blogcards}
       </Grid>
     </Box>
