@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper'
 import Avatar from '@mui/material/Avatar'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
+import Alert from '@mui/material/Alert'
 import Typography from '@mui/material/Typography'
 import LoginIcon from '@mui/icons-material/Login';
 
@@ -18,6 +19,7 @@ function Login() {
 
   const setLoggedIn = useSetRecoilState(loggedIn)
   const setUserState = useSetRecoilState(userState)
+  const [error, setError] = useState("")
   const [formObj, setFormObj] = useState({
     username: "",
     password: ""
@@ -50,7 +52,14 @@ function Login() {
               password: ""
             })
           })
-        }     
+        } 
+        else{
+          res.json().then(data => setError(data.error))
+          setFormObj({
+            username: formObj.username,
+            password: ""
+          })
+        }    
       })
     }
 
@@ -108,6 +117,7 @@ function Login() {
                 </Typography>
               </div>    
           </form>
+          {error? <Alert variant="filled" severity="error">{error}</Alert> : null}
         </Paper>
       </Grid>
     </Box>

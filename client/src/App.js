@@ -7,9 +7,10 @@ import { useSetRecoilState, useRecoilValue} from 'recoil'
 import Landing from "./pages/Landing";
 import BlogFeed from "./pages/BlogFeed";
 import Login from "./pages/Login";
-import CreateAccount from "./pages/CreateAccount";
 import Layout from "./components/Layout";
 import Blog from "./pages/Blog";
+import SignUp from "./pages/SignUp";
+import CreateBlog from './pages/CreateBlog'
 
 function App() {
 
@@ -43,7 +44,8 @@ function App() {
             <Route path="/feed" element={<BlogFeed/>} />
             <Route path="/blogs/:id" element={<Blog/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path="/create_account" element={<CreateAccount/>} />
+            <Route path="/signup" element={<SignUp/>} />
+            <Route path="/create_blog" element={<CreateBlog/>} />
           </Routes>
         </Layout>
       </div>

@@ -1,0 +1,8 @@
+.signup__form{
+    display: grid;
+    grid-template-rows: 10vh 10vh 10vh;
+}
+
+.signup__submit{
+    height: 40px;
+}

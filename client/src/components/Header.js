@@ -80,7 +80,9 @@ function Header() {
                           <Typography>My Blogs</Typography>
                       </MenuItem>
                       <MenuItem>
+                        <Link to="/create_blog">
                           <Typography>Create New Blog</Typography>
+                        </Link>
                       </MenuItem>
                       <MenuItem onClick={handleLogout}>
                           <Typography>Logout</Typography>

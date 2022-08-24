@@ -1,0 +1,22 @@
+.create__blog{
+    display: grid;
+    grid-template-rows: 10vh 42vh 10vh 10vh;
+}
+
+.login__submit{
+    height: 40px;
+}
+
+.create__blog__title{
+    height: 100vh;
+    grid-row: 1;
+}
+
+.content{
+    height: 100vh;
+    grid-row: 2;
+}
+
+.select{
+    grid-row: 3;
+}
