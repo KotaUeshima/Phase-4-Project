@@ -8,16 +8,18 @@ import Typography from '@mui/material/Typography';
 
 function BlogCard({blog}) {
 
-  const {title, content, likes, dislikes, category, id} = blog
+  const {title, content, id} = blog
 
-  const cardStyle = {height: '10vh'}
+  const cardStyle = {
+    height: '10vh'
+  }
 
   return (
     <Grid item xs={8} margin="auto"> 
-      <Card style={cardStyle}>
+      <Card style={cardStyle} sx={{ ':hover': {boxShadow: 5}}}>
          <CardContent>
-          <Link to={`/blogs/${id}`} style={{textDecoration: 'none'}}>
-            <Typography variant="h5" component="div">
+          <Link to={`/blogs/${id}`} style={{textDecoration: 'none', color: 'black'}}>
+            <Typography variant="h5" component="div" style={{fontWeight:"600"}}>
               {title}
             </Typography>
           </Link>

@@ -1,6 +1,7 @@
 import React from 'react'
+
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 
@@ -10,9 +11,9 @@ function Footer() {
       <Divider/>
         <Box width='100vw' height ='10vh'>
            <Grid container spacing={5}>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <Box textAlign="center" padding={1}>
-                   BlogSports &reg; 2022
+                   <Typography variant="subtitle1">BlogSports &reg; 2022</Typography>
                 </Box>
               </Grid>
            </Grid>

@@ -48,6 +48,7 @@ function Comments({id, user_id}) {
     <>
         <Grid item xs={11}>
             <TextField
+            style={{width: "60vw"}}
             value={comment}
             onChange={handleChange}
             />
@@ -63,7 +64,7 @@ function Comments({id, user_id}) {
         <List>
         {comments.map(comment => {
         return <>
-        <ListItem>
+           <ListItem>
                 <ListItemAvatar>
                     <Avatar>{comment.user.username.substring(0,1)}</Avatar>
                 </ListItemAvatar>
@@ -71,7 +72,7 @@ function Comments({id, user_id}) {
                     primary={comment.content}
                 />
             </ListItem>
-         <Divider variant="inset" component="li" />
+            <Divider variant="inset" component="li" />
          </>
         })}
         </List>

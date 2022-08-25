@@ -13,7 +13,20 @@ import SignUp from "./pages/SignUp";
 import CreateBlog from './pages/CreateBlog'
 import MyBlogs from "./pages/MyBlogs";
 
+import {createTheme, ThemeProvider} from '@mui/material/styles'
+
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#ff1e00"
+      }
+    },
+    typography: {
+      fontFamily: 'Quicksand'
+    }
+  })
 
   const setLoggedIn = useSetRecoilState(loggedIn)
   const setUserState = useSetRecoilState(userState)
@@ -37,21 +50,23 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Landing/>} />
-            <Route path="/feed" element={<BlogFeed/>} />
-            <Route path="/blogs/:id" element={<Blog/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/signup" element={<SignUp/>} />
-            <Route path="/create_blog" element={<CreateBlog/>} />
-            <Route path="/my_blogs" element={<MyBlogs/>} />
-          </Routes>
-        </Layout>
-      </div>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <div className="App">
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Landing/>} />
+              <Route path="/feed" element={<BlogFeed/>} />
+              <Route path="/blogs/:id" element={<Blog/>} />
+              <Route path="/login" element={<Login/>} />
+              <Route path="/signup" element={<SignUp/>} />
+              <Route path="/create_blog" element={<CreateBlog/>} />
+              <Route path="/my_blogs" element={<MyBlogs/>} />
+            </Routes>
+          </Layout>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

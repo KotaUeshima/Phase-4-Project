@@ -12,6 +12,7 @@ import Avatar from '@mui/material/Avatar'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
+import Typography from '@mui/material/Typography'
 import LoginIcon from '@mui/icons-material/Login';
 
 function SignUp() {
@@ -60,11 +61,11 @@ function SignUp() {
 
 
     const paperStyle = {padding: 20, height:'40vh', width: '20vw', margin: "auto"}
-    const avatarStyle = {backgroundColor: 'green'}
+    const avatarStyle = {backgroundColor: '#ff1e00'}
     const backgroundStyle = {
       minHeight: '85vh',
       backgroundSize: 'cover',
-      backgroundColor: '#BEBEBE',
+      backgroundColor: '#FED8B1',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -76,7 +77,7 @@ function SignUp() {
         <Paper elevation={20} style={paperStyle}>
             <Grid align='center'>
             <Avatar style={avatarStyle}><LoginIcon/></Avatar>
-            <h2>Create Account</h2>
+            <Typography margin={2} variant="h4">Create Account</Typography>
             </Grid>
             <form className="signup__form" onSubmit={handleSubmit}>
                 <TextField

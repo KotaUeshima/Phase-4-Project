@@ -64,11 +64,11 @@ function Login() {
     }
 
     const paperStyle = {padding: 20, height:'50vh', width: '20vw', margin: "auto"}
-    const avatarStyle = {backgroundColor: 'green'}
+    const avatarStyle = {backgroundColor: '#ff1e00'}
     const backgroundStyle = {
       minHeight: '85vh',
       backgroundSize: 'cover',
-      backgroundColor: '#BEBEBE',
+      backgroundColor: '#FED8B1',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -80,7 +80,7 @@ function Login() {
         <Paper elevation={20} style={paperStyle}>
           <Grid align='center'>
             <Avatar style={avatarStyle}><LoginIcon/></Avatar>
-            <h2>Login</h2>
+            <Typography margin={2} variant="h4">Login</Typography>
           </Grid>
           <form className="login__form" onSubmit={handleSubmit}>
               <TextField

@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
 
     def index
-        render json: Blog.all
+        blogs = Blog.all.order(:likes).reverse
+        render json: blogs
     end
 
     def show
@@ -24,6 +25,26 @@ class BlogsController < ApplicationController
                 blog.save
             else
                 blog.update(likes: blog.likes + 1)
+                blog.likedusers << username
+                blog.save
+            end
+            render json: blog
+        else
+            render json: {error: "Not Authorized"}, status: :unauthorized
+        end
+    end
+
+    def dislikes
+        user = User.find_by(id: session[:user_id])
+        if user
+            username = user.username
+            blog = Blog.find(params[:id])
+            if(blog.likedusers.include? username)
+                blog.update(dislikes: blog.dislikes - 1)
+                blog.likedusers.delete(username)
+                blog.save
+            else
+                blog.update(dislikes: blog.dislikes + 1)
                 blog.likedusers << username
                 blog.save
             end

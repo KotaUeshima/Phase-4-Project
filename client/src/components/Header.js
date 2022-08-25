@@ -50,8 +50,8 @@ function Header() {
 
   const appStyle = {background: 'white', boxShadow: 'none', height: '10vh'}
   const displayAvatar = user.username? user.username.substring(0,1) : <AccountCircleIcon/>
-  const linkStyle = {textDecoration: 'none'}
-  const titleStyle = {color: 'black', fontSize: '2.5rem'}
+  const linkStyle = {color: 'black', textDecoration: 'none'}
+  const titleStyle = {color: 'black', fontSize: '3rem', fontWeight: '700'}
 
   return (
         <Box sx={{flexGrow: 1}} >
@@ -68,7 +68,7 @@ function Header() {
                 
                   <Tooltip title="Open settings">
                     <IconButton sx={{mr: 2}} onClick={handleOpenUserMenu}>
-                      <Avatar>{displayAvatar}</Avatar>
+                      <Avatar sx={{ bgcolor: '#ff1e00' }}>{displayAvatar}</Avatar>
                     </IconButton>
                   </Tooltip>
                   <Menu

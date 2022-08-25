@@ -9,7 +9,7 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Badge from '@mui/material/Badge'
-import { IconButton } from '@mui/material'
+import { IconButton, Typography } from '@mui/material'
 
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
@@ -55,7 +55,7 @@ function Blog() {
   }
 
   function decreaseLikes(){
-    fetch(`/blogs/${id}`, {
+    fetch(`/dislikes/${id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({dislikes: dislikes + 1})
@@ -72,7 +72,6 @@ function Blog() {
 
   const pageStyle = {
     height: '85vh',
-    backgroundColor: 'white',
     margin: '10vh',
     marginTop: '30px'
   }
@@ -98,16 +97,16 @@ function Blog() {
             </IconButton>
           </Grid>
           <Grid item xs={1}>
-            <p>{user.username}</p>
+            <Typography variant="body2">{user.username}</Typography>
           </Grid>
           <Grid item xs={11}>
-            <h1>{title}</h1>
+            <Typography variant="h3">{title}</Typography>
           </Grid>
           <Grid item xs={1}>
-            <h2>{category}</h2>
+          <Typography variant="h3">{category}</Typography>
           </Grid>
           <Grid item xs={12}>
-            <p>{content}</p>
+            <Typography variant="subtitle1">{content}</Typography>
           </Grid>
           <Comments id={id} user_id={recoilUser.id}/>
         </Grid>

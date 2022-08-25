@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/user_blogs", to: "users#show_blogs"
+  patch "/dislikes/:id", to: "blogs#dislikes"
 
   get "/me", to: "users#show"
   
