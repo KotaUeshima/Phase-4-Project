@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './CreateBlog.css'
+import {useNavigate} from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
@@ -13,19 +14,24 @@ import {useRecoilValue} from 'recoil'
 function CreateBlog() {
 
       const user = useRecoilValue(userState)
-      const [formObj, setFormObj] = useState({
+      const defaultObj = {
         title: "",
         content: "",
         category: "",
         likes: 0,
         dislikes: 0,
-        user_id: user.id
-      })
+        user_id: user.id,
+      }
+      const [formObj, setFormObj] = useState(defaultObj)
       const categories = ['NFL', 'NHL', 'MLB', 'NBA', 'Tennis', 'Boxing']
-    
+      let navigate = useNavigate()
     
       function handleChange(e){
-          setFormObj(obj => ({...obj, [e.target.id]: e.target.value}))
+        setFormObj(obj => ({...obj, [e.target.id]: e.target.value}))
+      }
+
+      function handleSelect(e){
+        setFormObj(obj => ({...obj, category: e.target.value}))
       }
 
       function handleSubmit(e){
@@ -34,6 +40,11 @@ function CreateBlog() {
           method: "POST",
           headers: { "Content-Type": 'application/json'},
           body: JSON.stringify(formObj)
+        })
+        .then(res => res.json())
+        .then(() => {
+            setFormObj(defaultObj)
+            navigate('/my_blogs')
         })
       }
 
@@ -50,7 +61,9 @@ function CreateBlog() {
         marginTop: '30px'
       }
 
-      console.log(formObj)
+      const array = categories.map(category => {
+        return <MenuItem key={category} value={category}>{category}</MenuItem>
+      })
     
       return (
         <Container style={backgroundStyle}>
@@ -80,11 +93,9 @@ function CreateBlog() {
                 label="Category"
                 id="category"
                 value={formObj.category}
-                onChange={handleChange}
+                onChange={handleSelect}
               >
-               {categories.map(category => {
-                return <MenuItem key={category} value={category}>{category}</MenuItem>
-               })} 
+               {array}
               </TextField>
               <Button
                 variant="contained"

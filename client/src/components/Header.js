@@ -1,17 +1,18 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { userState, loggedIn } from './atoms';
 import { useSetRecoilState, useRecoilValue} from 'recoil'
@@ -22,6 +23,7 @@ function Header() {
   const setLoggedIn = useSetRecoilState(loggedIn)
   const setUserState = useSetRecoilState(userState)
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  let navigate = useNavigate()
 
   function handleLogout(){
     fetch('/logout', {
@@ -33,6 +35,8 @@ function Header() {
         username: '',
         id: ''
       })
+      handleCloseUserMenu()
+      navigate('/feed')
     })
   }
   
@@ -45,22 +49,30 @@ function Header() {
   }
 
   const appStyle = {background: 'white', boxShadow: 'none', height: '10vh'}
-  const displayAvatar = user.username? user.username.substring(0,1) : "" 
+  const displayAvatar = user.username? user.username.substring(0,1) : <AccountCircleIcon/>
+  const linkStyle = {textDecoration: 'none'}
+  const titleStyle = {color: 'black', fontSize: '2.5rem'}
 
   return (
         <Box sx={{flexGrow: 1}} >
             <AppBar 
             style={appStyle} 
             elevation={4}
-            position="sticky">
-                <Toolbar>   
+            position="static">
+                <Toolbar>                 
+                  <Typography style={titleStyle} sx={{flexGrow: 1}}>
+                    <Link to="/feed" style={linkStyle}>
+                      BlogSports
+                    </Link> 
+                  </Typography> 
+                
                   <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu}>
+                    <IconButton sx={{mr: 2}} onClick={handleOpenUserMenu}>
                       <Avatar>{displayAvatar}</Avatar>
                     </IconButton>
                   </Tooltip>
                   <Menu
-                  sx={{ mt: '45px' }}
+                  sx={{ mt: '45px'}}
                   anchorEl={anchorElUser}
                   anchorOrigin={{
                     vertical: 'top',
@@ -76,11 +88,13 @@ function Header() {
                   >
                     {user.username? 
                     <>
-                      <MenuItem>
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Link to="/my_blogs" style={linkStyle}>
                           <Typography>My Blogs</Typography>
+                        </Link>
                       </MenuItem>
-                      <MenuItem>
-                        <Link to="/create_blog">
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Link to="/create_blog" style={linkStyle}>
                           <Typography>Create New Blog</Typography>
                         </Link>
                       </MenuItem>
@@ -89,7 +103,7 @@ function Header() {
                       </MenuItem>
                     </>:
                     <MenuItem onClick={handleCloseUserMenu}>
-                      <Link to='/login'>
+                      <Link to='/login' style={linkStyle}>
                         <Typography>Login</Typography>
                       </Link>
                     </MenuItem>

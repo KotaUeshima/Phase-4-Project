@@ -11,6 +11,7 @@ import Layout from "./components/Layout";
 import Blog from "./pages/Blog";
 import SignUp from "./pages/SignUp";
 import CreateBlog from './pages/CreateBlog'
+import MyBlogs from "./pages/MyBlogs";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/login" element={<Login/>} />
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/create_blog" element={<CreateBlog/>} />
+            <Route path="/my_blogs" element={<MyBlogs/>} />
           </Routes>
         </Layout>
       </div>

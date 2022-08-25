@@ -1,6 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
 
+    has_many :blogs
+    has_many :comments
+
     validates :username, uniqueness: true
     validates :password, length: {minimum: 8, message: "must be at least 8 characters"}
     validate :contains_number
