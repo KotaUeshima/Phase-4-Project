@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 
 
@@ -48,18 +48,24 @@ function Comments({id, user_id}) {
     <>
         <Grid item xs={11}>
             <TextField
-            style={{width: "60vw"}}
+            style={{width: "60vw", height: '5vh', margin: '0'}}
             value={comment}
             onChange={handleChange}
+            placeholder="Enter comment..."
             />
         </Grid>
         <Grid item xs={1}>
             <Button
             variant="contained"
             onClick={createComment}
+            style={{height: '6.5vh'}}
             >
             Comment
             </Button>
+        </Grid>
+        <Grid item xs={12}>
+            <Box style={{height: '4vh'}}>
+            </Box>
         </Grid>
         <List>
         {comments.map(comment => {
@@ -76,6 +82,10 @@ function Comments({id, user_id}) {
          </>
         })}
         </List>
+        <Grid item xs={12}>
+            <Box style={{height: '10vh'}}>
+            </Box>
+        </Grid>
     </>
   )
 }

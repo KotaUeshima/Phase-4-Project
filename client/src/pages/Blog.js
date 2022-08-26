@@ -80,6 +80,10 @@ function Blog() {
     <Container style={backgroundStyle}>
       <Box style={pageStyle}>
         <Grid container>
+          <Grid item xs={12}>
+            <Box style={{height: '2vh'}}>
+            </Box>
+          </Grid>
           <Grid item xs={9}>
           </Grid>
           <Grid item xs={1}>
@@ -106,7 +110,15 @@ function Blog() {
           <Typography variant="h3">{category}</Typography>
           </Grid>
           <Grid item xs={12}>
+            <Box style={{height: '2vh'}}>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
             <Typography variant="subtitle1">{content}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Box style={{height: '4vh'}}>
+            </Box>
           </Grid>
           <Comments id={id} user_id={recoilUser.id}/>
         </Grid>
