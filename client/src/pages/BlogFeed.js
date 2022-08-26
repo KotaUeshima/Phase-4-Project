@@ -27,7 +27,6 @@ function BlogFeed() {
       }
     }
   })
-  console.log(filteredBlogs)
 
 
   const blogCards = filteredBlogs.map(blog => {
@@ -42,6 +41,7 @@ function BlogFeed() {
   const paperStyle = {height: '7.5vh', width: '20vh'}
 
   function handleClick(category){
+    console.log('clicked')
     if(category == 'All'){
       setCategory('')
     }
